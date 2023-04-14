@@ -1,0 +1,39 @@
+daemonset:
+  enabled: false
+deployment:
+  enabled: true
+  replicaCount: 3
+  autoscaling:
+    enabled: false
+    minReplicas: 3
+    maxReplicas: 12
+configmap:
+  enabled: true
+
+extraPorts:
+ syslog:
+   name: tcp-syslog
+   containerPort: 1514
+   protocol: TCP
+   service:
+     type: ClusterIP
+     port: 1514
+     #type: LoadBalancer
+     #loadBalancerIP: 10.20.x.x
+    
+config:
+  snippets:
+    extraScrapeConfigs: |
+      - job_name: syslog
+        syslog:
+          listen_address: 0.0.0.0:{{ .Values.extraPorts.syslog.containerPort }}
+          labels:
+            job: syslog
+        relabel_configs:
+          - source_labels:
+              - __syslog_message_hostname
+            target_label: hostname
+
+          - source_labels:
+              - __syslog_message_severity
+            target_label: level
