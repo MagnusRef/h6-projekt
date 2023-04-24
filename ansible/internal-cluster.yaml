@@ -1,0 +1,74 @@
+all:
+  hosts:
+    bal-cpl-p01.malumn.local:
+      ansible_host: bal-cpl-p01.malumn.local
+      access_ip: 10.20.0.45
+      ip: 10.20.0.45
+      
+    bal-cpl-p02.malumn.local:
+      ansible_host: bal-cpl-p02.malumn.local
+      access_ip: 10.20.0.46
+      ip: 10.20.0.46
+      
+    bal-cpl-p03.malumn.local:
+      ansible_host: bal-cpl-p03.malumn.local
+      access_ip: 10.20.0.47
+      ip: 10.20.0.47
+      
+    bal-wrk-p01.malumn.local:
+      ansible_host: bal-wrk-p01.malumn.local
+      access_ip: 10.20.0.48
+      ip: 10.20.0.48
+      
+    bal-wrk-p02.malumn.local:
+      ansible_host: bal-wrk-p02.malumn.local
+      access_ip: 10.20.0.49
+      ip: 10.20.0.49
+      
+    bal-wrk-p03.malumn.local:
+      ansible_host: bal-wrk-p03.malumn.local
+      access_ip: 10.20.0.50
+      ip: 10.20.0.50
+      
+  children:
+    kube_control_plane:
+      hosts:
+        bal-cpl-p01.malumn.local:
+        bal-cpl-p02.malumn.local:
+        bal-cpl-p03.malumn.local:
+    kube_node:
+      hosts:
+        bal-cpl-p01.malumn.local:
+        bal-cpl-p02.malumn.local:
+        bal-cpl-p03.malumn.local:
+        bal-wrk-p01.malumn.local:
+        bal-wrk-p02.malumn.local:
+        bal-wrk-p03.malumn.local:
+    etcd:
+      hosts:
+        bal-cpl-p01.malumn.local:
+        bal-cpl-p02.malumn.local:
+        bal-cpl-p03.malumn.local:
+    k8s_cluster:
+      children:
+        kube_control_plane:
+        kube_node:
+      vars:
+        # DNS
+        # upstream_dns_servers:
+        #   - 10.20.0.4
+        #   - 10.20.0.5
+        # # FLATCAR
+        # bin_dir: /opt/bin
+        # ansible_python_interpreter: /opt/bin/python
+        # KUBE-VIP
+        kube_vip_enabled: true
+        kube_vip_controlplane_enabled: true
+        kube_vip_address: 10.20.0.44
+        kube_vip_services_enabled: false
+        kube_vip_arp_enabled: true
+        loadbalancer_apiserver:
+          address: 10.20.0.44
+          port: 6443
+    calico_rr:
+      hosts: {}
