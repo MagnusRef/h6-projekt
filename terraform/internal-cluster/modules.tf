@@ -13,7 +13,7 @@ module "cluster" {
       hostname = "BAL-CPL-P01"
       fqdn     = "bal-cpl-p01.malumn.local"
       vcpu     = 2
-      memory   = 2048
+      memory   = 4048
       ipv4     = "10.20.0.45/24"
       dns1     = "10.20.0.4"
       dns2     = "10.20.0.5"
@@ -24,7 +24,7 @@ module "cluster" {
       hostname = "BAL-CPL-P02"
       fqdn     = "bal-cpl-p02.malumn.local"
       vcpu     = 2
-      memory   = 2048
+      memory   = 4048
       ipv4     = "10.20.0.46/24"
       dns1     = "10.20.0.4"
       dns2     = "10.20.0.5"
@@ -35,7 +35,7 @@ module "cluster" {
       hostname = "BAL-CPL-P03"
       fqdn     = "bal-cpl-p03.malumn.local"
       vcpu     = 2
-      memory   = 2048
+      memory   = 4048
       ipv4     = "10.20.0.47/24"
       dns1     = "10.20.0.4"
       dns2     = "10.20.0.5"
@@ -45,8 +45,8 @@ module "cluster" {
     {
       hostname = "BAL-WRK-P01"
       fqdn     = "bal-wrk-p01.malumn.local"
-      vcpu     = 2
-      memory   = 2048
+      vcpu     = 4
+      memory   = 8192
       ipv4     = "10.20.0.48/24"
       dns1     = "10.20.0.4"
       dns2     = "10.20.0.5"
@@ -56,8 +56,8 @@ module "cluster" {
     {
       hostname = "BAL-WRK-P02"
       fqdn     = "bal-wrk-p02.malumn.local"
-      vcpu     = 2
-      memory   = 2048
+      vcpu     = 4
+      memory   = 8192
       ipv4     = "10.20.0.49/24"
       dns1     = "10.20.0.4"
       dns2     = "10.20.0.5"
@@ -67,8 +67,8 @@ module "cluster" {
     {
       hostname = "BAL-WRK-P03"
       fqdn     = "bal-wrk-p03.malumn.local"
-      vcpu     = 2
-      memory   = 2048
+      vcpu     = 4
+      memory   = 8192
       ipv4     = "10.20.0.50/24"
       dns1     = "10.20.0.4"
       dns2     = "10.20.0.5"
