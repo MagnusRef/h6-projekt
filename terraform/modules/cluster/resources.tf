@@ -10,6 +10,8 @@ resource "vsphere_virtual_machine" "vm" {
 
   guest_id  = data.vsphere_virtual_machine.template.guest_id
   scsi_type = data.vsphere_virtual_machine.template.scsi_type
+  
+  folder = var.vsphere.folder
 
   network_interface {
     network_id   = data.vsphere_network.network.id
@@ -18,7 +20,7 @@ resource "vsphere_virtual_machine" "vm" {
 
   disk {
     label            = "disk0"
-    size             = data.vsphere_virtual_machine.template.disks.0.size
+    size             = each.value.size
     thin_provisioned = data.vsphere_virtual_machine.template.disks.0.thin_provisioned
   }
 

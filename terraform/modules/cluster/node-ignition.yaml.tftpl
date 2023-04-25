@@ -15,7 +15,7 @@ storage:
           contents:
             inline: |
                 [Time]
-                NTP=bal-DC-P01.malumn.local bal-DC-P02.malumn.local
+                NTP=BAL-DC-P01.malumn.local BAL-DC-P02.malumn.local
         - filesystem: OEM
           path: /grub.cfg
           mode: 420
@@ -46,9 +46,10 @@ networkd:
 
 passwd:
     users:
+         - name: bastadmin
+          ssh_authorized_keys:
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDZ1FtpV7yWOCB3CQbDoAHDYSaPOOGMLsG7tKh2oDe7J Thiccpad
         - name: root
           ssh_authorized_keys:
             - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDZ1FtpV7yWOCB3CQbDoAHDYSaPOOGMLsG7tKh2oDe7J Thiccpad
-        - name: bastionadmin
-          ssh_authorized_keys:
-            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDZ1FtpV7yWOCB3CQbDoAHDYSaPOOGMLsG7tKh2oDe7J Thiccpad
+
