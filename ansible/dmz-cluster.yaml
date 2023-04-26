@@ -1,0 +1,75 @@
+all:
+  hosts:
+    bal-cpl-dz01.malumn.local:
+      ansible_host: bal-cpl-dz01.malumn.local
+      access_ip: 10.30.0.10
+      ip: 10.30.0.10
+      
+    bal-cpl-dz02.malumn.local:
+      ansible_host: bal-cpl-dz02.malumn.local
+      access_ip: 10.30.0.11
+      ip: 10.30.0.11
+      
+    bal-cpl-dz03.malumn.local:
+      ansible_host: bal-cpl-dz03.malumn.local
+      access_ip: 10.30.0.12
+      ip: 10.30.0.12
+      
+    bal-wrk-dz01.malumn.local:
+      ansible_host: bal-wrk-dz01.malumn.local
+      access_ip: 10.30.0.20
+      ip: 10.30.0.20
+      
+    bal-wrk-dz02.malumn.local:
+      ansible_host: bal-wrk-dz02.malumn.local
+      access_ip: 10.30.0.21
+      ip: 10.30.0.21
+      
+    bal-wrk-dz03.malumn.local:
+      ansible_host: bal-wrk-dz03.malumn.local
+      access_ip: 10.30.0.22
+      ip: 10.30.0.22
+      
+  children:
+    kube_control_plane:
+      hosts:
+        bal-cpl-dz01.malumn.local:
+        bal-cpl-dz02.malumn.local:
+        bal-cpl-dz03.malumn.local:
+    kube_node:
+      hosts:
+        bal-cpl-dz01.malumn.local:
+        bal-cpl-dz02.malumn.local:
+        bal-cpl-dz03.malumn.local:
+        bal-wrk-dz01.malumn.local:
+        bal-wrk-dz02.malumn.local:
+        bal-wrk-dz03.malumn.local:
+    etcd:
+      hosts:
+        bal-cpl-dz01.malumn.local:
+        bal-cpl-dz02.malumn.local:
+        bal-cpl-dz03.malumn.local:
+    k8s_cluster:
+      children:
+        kube_control_plane:
+        kube_node:
+      vars:
+        # DNS
+        upstream_dns_servers:
+          - 10.20.0.4
+          - 10.20.0.5
+        # FLATCAR
+        bin_dir: /opt/bin
+        ansible_python_interpreter: /opt/bin/python
+        # KUBE-VIP
+        kube_vip_enabled: true
+        kube_vip_controlplane_enabled: true
+        kube_vip_address: 10.30.0.9
+        kube_vip_services_enabled: true
+        kube_proxy_strict_arp: true
+        kube_vip_arp_enabled: true
+        loadbalancer_apiserver:
+          address: 10.30.0.9
+          port: 6443
+    calico_rr:
+      hosts: {}
