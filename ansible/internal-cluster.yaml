@@ -58,6 +58,8 @@ all:
         upstream_dns_servers:
           - 10.20.0.4
           - 10.20.0.5
+        # local node storage
+        local_path_provisioner_enabled: true
         # FLATCAR
         bin_dir: /opt/bin
         ansible_python_interpreter: /opt/bin/python
