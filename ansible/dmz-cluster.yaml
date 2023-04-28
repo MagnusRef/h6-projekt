@@ -71,5 +71,7 @@ all:
         loadbalancer_apiserver:
           address: 10.30.0.9
           port: 6443
+        # cert-manager
+        cert_manager_enabled: true
     calico_rr:
       hosts: {}
