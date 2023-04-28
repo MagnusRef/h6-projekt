@@ -73,5 +73,7 @@ all:
           port: 6443
         # cert-manager
         cert_manager_enabled: true
+        # local node storage
+        local_path_provisioner_enabled: true
     calico_rr:
       hosts: {}
