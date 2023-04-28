@@ -12,6 +12,7 @@ resource "vsphere_virtual_machine" "vm" {
   scsi_type = data.vsphere_virtual_machine.template.scsi_type
 
   folder = var.vsphere.folder
+  tags = toset(each.value.tags)
 
   network_interface {
     network_id   = data.vsphere_network.network.id

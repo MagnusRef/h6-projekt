@@ -1,4 +1,10 @@
 terraform {
+  required_providers {
+    vsphere = {
+      source  = "hashicorp/vsphere"
+      version = "2.2.0"
+    }
+  }
   backend "http" {
     address        = "https://gitlab.com/api/v4/projects/45321252/terraform/state/dmz-cluster"
     lock_address   = "https://gitlab.com/api/v4/projects/45321252/terraform/state/dmz-cluster/lock"
@@ -6,4 +12,8 @@ terraform {
     unlock_address = "https://gitlab.com/api/v4/projects/45321252/terraform/state/dmz-cluster/lock"
     unlock_method  = "DELETE"
   }
+}
+
+provider "vsphere" {
+  allow_unverified_ssl = true
 }

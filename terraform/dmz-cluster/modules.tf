@@ -14,6 +14,7 @@ module "cluster" {
       fqdn     = "bal-cpl-dz01.malumn.local"
       vcpu     = 2
       memory   = 4048
+      tags    = [data.vsphere_tag.cpl.id]
       ipv4     = "10.30.0.10/16"
       dns1     = "10.20.0.4"
       dns2     = "10.20.0.5"
@@ -25,6 +26,7 @@ module "cluster" {
       fqdn     = "bal-cpl-dz02.malumn.local"
       vcpu     = 2
       memory   = 4048
+      tags    = [data.vsphere_tag.cpl.id]
       ipv4     = "10.30.0.11/16"
       dns1     = "10.20.0.4"
       dns2     = "10.20.0.5"
@@ -36,6 +38,7 @@ module "cluster" {
       fqdn     = "bal-cpl-dz03.malumn.local"
       vcpu     = 2
       memory   = 4048
+      tags    = [data.vsphere_tag.cpl.id]
       ipv4     = "10.30.0.12/16"
       dns1     = "10.20.0.4"
       dns2     = "10.20.0.5"
@@ -47,6 +50,7 @@ module "cluster" {
       fqdn     = "bal-wrk-dz01.malumn.local"
       vcpu     = 4
       memory   = 8192
+      tags    = [data.vsphere_tag.wrk.id]
       ipv4     = "10.30.0.20/16"
       dns1     = "10.20.0.4"
       dns2     = "10.20.0.5"
@@ -58,6 +62,7 @@ module "cluster" {
       fqdn     = "bal-wrk-dz02.malumn.local"
       vcpu     = 4
       memory   = 8192
+      tags    = [data.vsphere_tag.wrk.id]
       ipv4     = "10.30.0.21/16"
       dns1     = "10.20.0.4"
       dns2     = "10.20.0.5"
@@ -69,6 +74,7 @@ module "cluster" {
       fqdn     = "bal-wrk-dz03.malumn.local"
       vcpu     = 4
       memory   = 8192
+      tags    = [data.vsphere_tag.wrk.id]
       ipv4     = "10.30.0.22/16"
       dns1     = "10.20.0.4"
       dns2     = "10.20.0.5"
