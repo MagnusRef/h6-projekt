@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: malumnweb-ingress
+  annotations:
+      kubernetes.io/ingress.class: nginx
+      cert-manager.io/issuer: malumnweb-letsencrypt
+      #nginx.ingress.kubernetes.io/ssl-redirect: "true"
+
+spec:
+  #ingressClassName: nginx
+  rules:
+  - host: malumn.dk
+    http:
+      paths:
+      - backend:
+          service:
+            name: malumnweb-http-svc
+            port:
+              number: 8080
+        path: /
+        pathType: Prefix
+  tls:
+    - hosts:
+        - malumn.dk
+      secretName: malumnweb-tls
+

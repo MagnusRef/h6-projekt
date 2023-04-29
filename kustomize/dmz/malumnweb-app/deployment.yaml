@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: malumnweb-app
+  name: malumnweb-deploy
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: malumnweb-app
+  template:
+    metadata:
+      labels:
+        app: malumnweb-app
+    spec:
+      containers:
+      - image: nginx
+        name: web
+        ports:
+          - containerPort: 80
+        volumeMounts:
+          - name: index
+            readOnly: true
+            mountPath: /usr/share/nginx/html
+      volumes:
+        - name: index
+          configMap:
+            name: malumnweb-index-config
+            

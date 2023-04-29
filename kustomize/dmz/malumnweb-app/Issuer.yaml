@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: malumnweb-letsencrypt
+spec:
+  acme:  
+    email:  wow.infected@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    #server: https://acme-staging-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: malumn-issuer-key    
+    solvers: 
+    - dns01:
+        cloudflare:
+          email: wow.infected@gmail.com
+          apiTokenSecretRef:
+            name: malumn-cf-api-token
+            key: api-token
+    # - http01:
+    #     ingress:
+    #       class: nginx

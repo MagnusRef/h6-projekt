@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: malumnweb-index-config
+data:
+  index.html: |-
+    <!DOCTYPE html>
+    <html lang="dk">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>Malumn Hosting</title>
+    </head>
+    <body>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-4 text-success">Malumn Hosting</h1>
+              <p class="lead">web hosting anno April 2023</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Kontakt</h5>
+                  <p class="card-text">Salgsafdelingen kan kontaktes ved at sende en mail til <a href="mailto:sales@malumn.dk">sales@malumn.dk</a></p>
+                  <a href="mailto:sales@malumn.dk" class="btn btn-primary">Kontakt</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Lokation</h5>
+                  <p class="card-text">Malumn Hosting har kontor i Ballerup, hvor solen altid skinner.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </body>
+    </html>
