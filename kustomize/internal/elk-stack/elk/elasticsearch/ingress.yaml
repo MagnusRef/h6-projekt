@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: es-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: elasticsearch.malumn.local
+    http:
+      paths:
+      - backend:
+          service:
+            name: main-es-http
+            port:
+              number: 9200
+        path: /
+        pathType: Prefix

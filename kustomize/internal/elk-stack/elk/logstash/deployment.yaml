@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logstash
+  labels:
+    app.kubernetes.io/name: eck-logstash
+    app.kubernetes.io/component: logstash
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: eck-logstash
+      app.kubernetes.io/component: logstash
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: eck-logstash
+        app.kubernetes.io/component: logstash
+    spec:
+      containers:
+        - name: logstash
+          resources:
+          image: docker.elastic.co/logstash/logstash:8.7.0
+          ports:
+            - name: "syslog-udp"
+              containerPort: 1514
+              protocol: UDP
+          env:
+            - name: ES_HOSTS
+              value: "https://main-es-http.elk-stack.svc:9200"
+            - name: ES_USER
+              value: "logadmin"
+            - name: ES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: main-admin-secret
+                  key: password
+          volumeMounts:
+            - name: config-volume
+              mountPath: /usr/share/logstash/config
+            - name: pipeline-volume
+              mountPath: /usr/share/logstash/pipeline
+            - name: ca-certs
+              mountPath: /etc/logstash/certificates
+              readOnly: true
+      volumes:
+        - name: config-volume
+          configMap:
+            name: logstash-config
+        - name: pipeline-volume
+          configMap:
+            name: logstash-pipeline
+        - name: ca-certs
+          secret:
+            secretName: main-es-http-certs-public

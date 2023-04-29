@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kb-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: kibana.malumn.local
+    http:
+      paths:
+      - backend:
+          service:
+            name: main-kb-http
+            port:
+              number: 5601
+        path: /
+        pathType: Prefix
