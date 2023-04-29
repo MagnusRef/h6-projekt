@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: intranet-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: intranet-app
+  template:
+    metadata:
+      labels:
+        app: intranet-app
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - name: index
+            readOnly: true
+            mountPath: /usr/share/nginx/html
+      volumes:
+        - name: index
+          configMap:
+            name: intranet-index-config
