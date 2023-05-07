@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/name: eck-logstash
     app.kubernetes.io/component: logstash
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app.kubernetes.io/name: eck-logstash

@@ -1,3 +1,4 @@
+# Et loop der opretter DNS records beskrevet i variablen "records" som skal ramme IP-adressen variablen "ip"
 resource "cloudflare_record" "cluster" {
   for_each = toset(var.records)
 
@@ -6,5 +7,5 @@ resource "cloudflare_record" "cluster" {
   value   = var.ip
   type    = "A"
   ttl     = 1
-  proxied = true
+  proxied = false
 }

@@ -11,3 +11,5 @@ resources:
   - deployment.yaml
   - svc.yaml
   - ingress.yaml
+  - configMap.yaml
+  - networkPolicy.yaml

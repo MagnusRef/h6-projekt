@@ -12,6 +12,7 @@ resources:
   - deployment.yaml
   - service.yaml
   - secret.yaml
-  - Issuer.yaml
-  # - ClusterIssuer.yaml
   - ingress.yaml
+  - networkPolicy.yaml
+  - Issuer.yaml
+  - hpa.yaml

@@ -1,5 +1,8 @@
+# Hovedmodul, der opretter virtuelle maskiner baseret på det definerede input.
 module "cluster" {
   source = "../modules/cluster"
+
+  # Oplysninger på vSphere miljøet.
   vsphere = {
     cluster    = "BAL-CLUST-P01"
     datacenter = "BAL-DATAC-P01"
@@ -8,6 +11,8 @@ module "cluster" {
     template   = "flatcar-linux-stable-template"
     folder     = "DMZ Kubernetes Cluster"
   }
+  
+  # Liste over noder der skal oprettes, med deres specs og indstillinger.
   nodes = [
     {
       hostname = "BAL-CPL-DZ01"

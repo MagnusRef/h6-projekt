@@ -1,0 +1,7 @@
+alertmanager:
+  enabled: false
+server:
+  ingress:
+    enabled: true
+    hosts: [dmz-cluster.malumn.local]
+    ingressClassName: nginx 

@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: kube-system
 
 commonLabels:
-  cluster: internal 
+  cluster: dmz 
   app: metrics-server
 
 helmChartInflationGenerator:

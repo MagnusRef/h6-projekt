@@ -5,4 +5,4 @@ namespace: elk-stack
 resources:
   - secret.yaml
   - elasticsearch.yaml
-  - ingress.yaml
+  - service.yaml

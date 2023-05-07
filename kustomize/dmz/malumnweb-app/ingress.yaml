@@ -20,8 +20,19 @@ spec:
               number: 8080
         path: /
         pathType: Prefix
+  - host: www.malumn.dk
+    http:
+      paths:
+      - backend:
+          service:
+            name: malumnweb-http-svc
+            port:
+              number: 8080
+        path: /
+        pathType: Prefix
   tls:
     - hosts:
         - malumn.dk
+        - www.malumn.dk
       secretName: malumnweb-tls
 

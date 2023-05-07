@@ -13,7 +13,7 @@ spec:
         app: intranet-app
     spec:
       containers:
-      - image: nginx
+      - image: nginx:stable
         name: nginx
         ports:
         - containerPort: 80

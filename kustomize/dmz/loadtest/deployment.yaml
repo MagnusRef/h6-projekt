@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loadtest
+  labels:
+    app: loadtest
+  namespace: ingress-nginx
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: loadtest
+  template:
+    metadata:
+      name: loadtest
+      labels:
+        app: loadtest
+    spec:
+      containers:
+      - name: loadtest
+        image: busybox
+        command:
+        - /bin/sh
+        - -c
+        - "while true; do wget -q -O- http://malumnweb-http-svc.malumnweb-app.svc:8080; done"

@@ -2,3 +2,5 @@ controller:
   replicaCount: 3
   service:
     loadBalancerIP: 10.20.0.51
+  extraArgs:
+    enable-ssl-passthrough: true

@@ -2,3 +2,5 @@ controller:
   replicaCount: 3
   service:
     loadBalancerIP: 10.30.0.23
+  config:
+    use-forwarded-headers: true # allow cloudflare headers
