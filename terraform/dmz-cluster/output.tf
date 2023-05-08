@@ -1,12 +1,12 @@
 # gør det muligt at outputte ip adresserne på noderne fra modulet.
 output "ip" {
-  value = var.nodes[*].ipv4
+  value = module.cluster.ip
 }
 
 output "template" {
-  value = data.vsphere_virtual_machine.template.name
+  value = module.cluster.template 
 }
 
 output "ignition" {
-  value = file("${path.module}/node-ignition.yaml.tftpl")
+  value = module.cluster.ignition
 }

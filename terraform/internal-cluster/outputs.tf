@@ -1,3 +1,5 @@
+# gør det muligt at outputte ip adresserne på noderne fra modulet.
+# Samt template navn og igition fil
 output "ip" {
   value = module.cluster.ip
 }

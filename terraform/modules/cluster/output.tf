@@ -1,4 +1,5 @@
 # gør det muligt at outputte ip adresserne på noderne fra modulet.
+# Samt template navn og igition fil
 output "ip" {
   value = var.nodes[*].ipv4
 }
